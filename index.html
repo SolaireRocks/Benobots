@@ -81,7 +81,7 @@
             display: inline-block;
             padding: 0.8rem 2rem;
             background: var(--primary-color);
-            color: var(--text-light);
+            color: var(--text-light) !important; /* Use !important to override external styles if needed */
             border: none;
             border-radius: 50px;
             font-weight: 600;
@@ -89,6 +89,7 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-size: 14px; /* Align font size with other buttons */
         }
 
         .btn:hover {
@@ -297,19 +298,10 @@
         }
         
         .booking-placeholder {
-            min-height: 100px;
-            background: var(--card-bg);
-            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
-            border: 2px dashed var(--primary-color);
-        }
-        
-        .booking-placeholder span {
-            color: var(--text-medium);
-            font-style: italic;
+            padding: 1rem 0; /* Add some spacing around the button */
         }
 
         /* ------------------- */
@@ -422,7 +414,8 @@
             <div class="container fade-in-section">
                 <h1>Your Personal Tech Guru<span>.</span></h1>
                 <p>Confused by new technology? Need a tech problem fixed right now? I come to your home to teach, fix, and simplify all your tech needs.</p>
-                <a href="#booking" class="btn">Schedule a Visit</a>
+                <!-- UPDATED: This button now links directly to the booking page in a new tab -->
+                <a href="https://app.squareup.com/appointments/book/jc1merk64d6sbj/LNRTQGMPGJ4Z0/start" class="btn" target="_blank" rel="noopener noreferrer">Schedule a Visit</a>
             </div>
         </section>
 
@@ -483,9 +476,8 @@
                 <h2>Ready to Solve Your Tech Problems?</h2>
                 <p>Booking an in-home appointment is easy. Simply click the button below to find a time that works for you. I look forward to helping you!</p>
                 <div class="booking-placeholder">
-                    <!-- ADD YOUR BOOKING WIDGET/BUTTON CODE HERE -->
-                    <!-- For example, a Calendly button or a simple link to your booking page -->
-                    <span>Your booking button/widget will go here!</span>
+                    <!-- This button remains as a second option to book -->
+                    <a target="_blank" class="btn" href="https://app.squareup.com/appointments/book/jc1merk64d6sbj/LNRTQGMPGJ4Z0/start" rel="noopener noreferrer">Book Now</a>
                 </div>
             </div>
         </section>
@@ -497,7 +489,8 @@
     <!-- =================== -->
     <footer>
         <div class="container">
-            <p>&copy; 2024 benobot. All Rights Reserved. | Your Local Tech Expert</p>
+            <!-- UPDATED: Added Grafton, Ohio to the footer -->
+            <p>&copy; 2024 benobot. All Rights Reserved. | Your Local Tech Expert | Grafton, Ohio</p>
         </div>
     </footer>
 

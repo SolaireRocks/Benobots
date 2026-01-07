@@ -289,6 +289,22 @@
             flex: 1.5;
         }
         
+        /* ------------------- */
+        /* --- SOCIAL FEED --- */
+        /* ------------------- */
+        #social-feed {
+            text-align: center;
+        }
+
+        .fb-feed-wrapper {
+            display: inline-block;
+            background-color: #ffffff; /* Facebook plugin is native white */
+            padding: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            max-width: 100%;
+        }
+
         /* ----------------------- */
         /* ---- TESTIMONIALS ----- */
         /* ----------------------- */
@@ -434,6 +450,10 @@
 </head>
 <body>
 
+    <!-- Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0" nonce="AnyNonce"></script>
+
     <!-- =================== -->
     <!-- ==== NAVIGATION === -->
     <!-- =================== -->
@@ -509,6 +529,32 @@
                         <h2>Hi, I'm Ben. Your Friendly Neighborhood Tech Expert.</h2>
                         <p>I started benobot because I'm passionate about making technology accessible to everyone. In a world that's constantly changing, it's easy to feel left behind. My goal is to eliminate tech frustration by providing clear, friendly, and effective help.</p>
                         <p>With years of experience in IT and a love for teaching, I can solve your problems and empower you with the knowledge to handle your tech with confidence. When I'm not fixing gadgets, you can find me exploring local parks or building a new computer!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= -->
+        <!-- ==== SOCIAL FEED ====== -->
+        <!-- ======================= -->
+        <section id="social-feed" class="fade-in-section">
+            <div class="container">
+                <h2>Latest Updates</h2>
+                <p>Check out my latest posts on Facebook for tips, tricks, and news.</p>
+                <div class="fb-feed-wrapper">
+                    <!-- Facebook Page Plugin -->
+                    <div class="fb-page" 
+                         data-href="https://www.facebook.com/profile.php?id=61585948091769" 
+                         data-tabs="timeline" 
+                         data-width="500" 
+                         data-height="600" 
+                         data-small-header="false" 
+                         data-adapt-container-width="true" 
+                         data-hide-cover="false" 
+                         data-show-facepile="true">
+                        <blockquote cite="https://www.facebook.com/profile.php?id=61585948091769" class="fb-xfbml-parse-ignore">
+                            <a href="https://www.facebook.com/profile.php?id=61585948091769">benobot</a>
+                        </blockquote>
                     </div>
                 </div>
             </div>

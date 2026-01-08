@@ -97,6 +97,19 @@
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
+        
+        /* Secondary outline button style for the feed link */
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color) !important;
+            margin-top: 1rem;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: var(--text-light) !important;
+        }
 
         .fade-in-section {
             opacity: 0;
@@ -298,11 +311,15 @@
 
         .fb-feed-wrapper {
             display: inline-block;
-            background-color: #ffffff; /* Facebook plugin is native white */
-            padding: 10px;
+            background-color: #ffffff; 
+            padding: 0;
             border-radius: 8px;
             overflow: hidden;
+            width: 500px;
             max-width: 100%;
+            min-height: 500px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5); 
+            margin-bottom: 2rem;
         }
 
         /* ----------------------- */
@@ -452,14 +469,13 @@
 
     <!-- Facebook SDK for JavaScript -->
     <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0" nonce="AnyNonce"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0"></script>
 
     <!-- =================== -->
     <!-- ==== NAVIGATION === -->
     <!-- =================== -->
     <header class="navbar">
         <div class="container">
-            <!-- REVERTED to text logo -->
             <a href="#hero" class="logo">benobot<span>.</span></a>
             <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
@@ -540,23 +556,35 @@
         <section id="social-feed" class="fade-in-section">
             <div class="container">
                 <h2>Latest Updates</h2>
-                <p>Check out my latest posts on Facebook for tips, tricks, and news.</p>
+                <p>Check out my latest posts on Facebook.</p>
+                
                 <div class="fb-feed-wrapper">
-                    <!-- Facebook Page Plugin -->
+                    <!-- 
+                       Reverted to JS SDK method as it successfully loads the container.
+                       We use the specific /people/ URL format which works best for New Page Experience.
+                    -->
                     <div class="fb-page" 
-                         data-href="https://www.facebook.com/profile.php?id=61585948091769" 
-                         data-tabs="timeline" 
-                         data-width="500" 
-                         data-height="600" 
-                         data-small-header="false" 
-                         data-adapt-container-width="true" 
-                         data-hide-cover="false" 
-                         data-show-facepile="true">
-                        <blockquote cite="https://www.facebook.com/profile.php?id=61585948091769" class="fb-xfbml-parse-ignore">
-                            <a href="https://www.facebook.com/profile.php?id=61585948091769">benobot</a>
+                        data-href="https://www.facebook.com/people/Benobots/61585948091769/" 
+                        data-tabs="timeline" 
+                        data-width="500" 
+                        data-height="600" 
+                        data-small-header="false" 
+                        data-adapt-container-width="true" 
+                        data-hide-cover="false" 
+                        data-show-facepile="true">
+                        <blockquote cite="https://www.facebook.com/people/Benobots/61585948091769/" class="fb-xfbml-parse-ignore">
+                            <a href="https://www.facebook.com/people/Benobots/61585948091769/">Benobots</a>
                         </blockquote>
                     </div>
                 </div>
+                
+                <!-- Added a Fallback Button -->
+                <div>
+                    <a href="https://www.facebook.com/people/Benobots/61585948091769/" target="_blank" class="btn btn-outline">
+                        <i class="fab fa-facebook"></i> View Full Feed
+                    </a>
+                </div>
+
             </div>
         </section>
 

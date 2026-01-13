@@ -13,463 +13,36 @@
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+    
     <style>
-        /* ------------------- */
-        /* --- GLOBAL CSS ---- */
-        /* ------------------- */
-        :root {
-            --primary-color: #00A896; /* A vibrant teal */
-            --secondary-color: #02C39A;
-            --dark-bg: #1A1A1D;
-            --card-bg: #2C2C30;
-            --text-light: #F5F5F5;
-            --text-medium: #A9A9A9;
-            --text-dark: #1A1A1D;
-            --font-family: 'Poppins', sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--font-family);
-            background-color: var(--dark-bg);
-            color: var(--text-light);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        h1, h2, h3 {
-            font-weight: 600;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        h1 { font-size: 3rem; }
-        h2 { font-size: 2.5rem; color: var(--primary-color); }
-        h3 { font-size: 1.5rem; }
-
-        p {
-            margin-bottom: 1rem;
-            color: var(--text-medium);
-        }
-
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        section {
-            padding: 6rem 0;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: var(--primary-color);
-            color: var(--text-light) !important;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 14px;
-        }
-
-        .btn:hover {
-            background: var(--secondary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* Secondary outline button style for the feed link */
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color) !important;
-            margin-top: 1rem;
-        }
-
-        .btn-outline:hover {
-            background: var(--primary-color);
-            color: var(--text-light) !important;
-        }
-
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ------------------- */
-        /* ---- NAVIGATION --- */
-        /* ------------------- */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(26, 26, 29, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            z-index: 1000;
-            transition: background 0.3s ease;
-        }
-
-        .navbar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .navbar .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--text-light);
-        }
-
-        .navbar .logo span {
-            color: var(--primary-color);
-        }
-
-        .navbar .nav-links {
-            list-style: none;
-            display: flex;
-            align-items: center; /* Vertically align nav items */
-        }
-
-        .navbar .nav-links li {
-            margin-left: 2rem;
-        }
-
-        .navbar .nav-links a {
-            color: var(--text-light);
-            font-weight: 400;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-
-        .navbar .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-color);
-            transition: width 0.3s ease;
-        }
-
-        .navbar .nav-links a:hover::after, .navbar .nav-links a.active::after {
-            width: 100%;
-        }
-        
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            flex-direction: column;
-            gap: 5px;
-        }
-        
-        .hamburger .bar {
-            width: 25px;
-            height: 3px;
-            background-color: var(--text-light);
-            border-radius: 5px;
-            transition: all 0.3s ease-in-out;
-        }
-        
-        .nav-phone {
-            font-weight: 600;
-            color: var(--secondary-color) !important;
-        }
-
-        .nav-phone .fa-phone {
-            margin-right: 0.5rem;
-        }
-        
-        /* ------------------- */
-        /* ----- HERO -------- */
-        /* ------------------- */
-        #hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(rgba(26, 26, 29, 0.8), rgba(26, 26, 29, 0.8)), url('https://source.unsplash.com/1600x900/?technology,abstract') no-repeat center center/cover;
-        }
-
-        #hero h1 {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-        }
-
-        #hero h1 span {
-            color: var(--primary-color);
-        }
-
-        #hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 2rem auto;
-        }
-
-        /* ------------------- */
-        /* ---- SERVICES ----- */
-        /* ------------------- */
-        #services {
-            text-align: center;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-
-        .service-card {
-            background: var(--card-bg);
-            padding: 2.5rem 2rem;
-            border-radius: 10px;
-            text-align: left;
-            border-bottom: 4px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-bottom-color: var(--primary-color);
-        }
-
-        .service-card .icon {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-        
-        .service-card h3 {
-             color: var(--text-light);
-        }
-
-        /* ------------------- */
-        /* ----- ABOUT ------- */
-        /* ------------------- */
-        #about {
-            background: var(--card-bg);
-        }
-
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-        }
-
-        .about-image {
-            flex: 1;
-        }
-
-        .about-image img {
-            width: 100%;
-            max-width: 350px;
-            border-radius: 10px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-        }
-
-        .about-text {
-            flex: 1.5;
-        }
-        
-        /* ------------------- */
-        /* --- SOCIAL FEED --- */
-        /* ------------------- */
-        #social-feed {
-            text-align: center;
-        }
-
+        /* Local override to handle the specific Facebook loading state */
         .fb-feed-wrapper {
-            display: inline-block;
-            background-color: #ffffff; 
-            padding: 0;
-            border-radius: 8px;
-            overflow: hidden;
-            width: 500px;
-            max-width: 100%;
+            position: relative;
+            background-color: #f0f2f5; /* Facebook light gray */
             min-height: 500px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5); 
-            margin-bottom: 2rem;
         }
-
-        /* ----------------------- */
-        /* ---- TESTIMONIALS ----- */
-        /* ----------------------- */
-        #testimonials {
+        
+        .fb-loading-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             text-align: center;
-        }
-
-        .testimonial-card {
-            background: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 10px;
-            max-width: 750px;
-            margin: 4rem auto 0;
-            display: flex;
-            align-items: center;
-            gap: 2.5rem;
-            text-align: left;
+            color: #65676b;
+            z-index: 1;
+            width: 80%;
         }
         
-        .testimonial-image img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: contain;
-            border: 4px solid var(--primary-color);
-            flex-shrink: 0;
-        }
-
-        .testimonial-text blockquote {
-            margin: 0;
-            font-style: italic;
-            border-left: 3px solid var(--secondary-color);
-            padding-left: 1.5rem;
-        }
-        
-        .testimonial-author {
-            margin-top: 1rem;
-            font-weight: 600;
-            text-align: right;
-        }
-
-        .testimonial-author span {
-            color: var(--primary-color);
-            font-size: 1.2rem;
-        }
-
-        /* ------------------- */
-        /* ----- BOOKING ----- */
-        /* ------------------- */
-        #booking {
-            text-align: center;
-        }
-        
-        #booking .container {
-            max-width: 800px;
-        }
-
-        #booking p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-        
-        .booking-placeholder {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem 0;
-        }
-
-        /* ------------------- */
-        /* ----- FOOTER ------ */
-        /* ------------------- */
-        footer {
-            background: var(--card-bg);
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 4rem;
-        }
-
-        footer p {
-            margin: 0;
-            color: var(--text-medium);
-        }
-
-        /* ------------------- */
-        /* -- RESPONSIVENESS - */
-        /* ------------------- */
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 2rem; }
-            section { padding: 4rem 0; }
-
-            .navbar .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 70%;
-                height: 100vh;
-                background: var(--card-bg);
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                transition: right 0.4s ease-in-out;
-            }
-
-            .navbar .nav-links.active { right: 0; }
-            .navbar .nav-links li { margin: 1.5rem 0; }
-            .navbar .nav-links a { font-size: 1.2rem; }
-            .hamburger { display: flex; z-index: 1001; }
-            
-            .hamburger.toggle .bar:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
-            .hamburger.toggle .bar:nth-child(2) { opacity: 0; }
-            .hamburger.toggle .bar:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
-
-            .about-content { flex-direction: column; text-align: center; }
-
-            .testimonial-card {
-                flex-direction: column;
-                text-align: center;
-                gap: 1.5rem;
-            }
-            .testimonial-text blockquote { border-left: none; padding-left: 0; }
-            .testimonial-author { text-align: center; }
-            
-            .nav-phone {
-                background: var(--primary-color);
-                color: var(--text-light) !important;
-                padding: 0.5rem 1.5rem;
-                border-radius: 50px;
-                margin-top: 1rem;
-                transition: background-color 0.3s ease;
-            }
-            .nav-phone:hover {
-                background: var(--secondary-color);
-            }
-        }
-        
-        @media (max-width: 480px) {
-             .container { padding: 0 1rem; }
-             h1 { font-size: 2rem; }
+        .fb-feed-wrapper iframe {
+            position: relative;
+            z-index: 2;
+            background-color: transparent;
         }
     </style>
 </head>
 <body>
-
-    <!-- Facebook SDK for JavaScript -->
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0"></script>
 
     <!-- =================== -->
     <!-- ==== NAVIGATION === -->
@@ -531,6 +104,50 @@
                 </div>
             </div>
         </section>
+
+        <!-- ======================= -->
+        <!-- ==== SOCIAL FEED ====== -->
+        <!-- ======================= -->
+        <section id="social-feed" class="fade-in-section">
+            <div class="container">
+                <h2>Latest Updates</h2>
+                <p>Check out my latest posts on Facebook.</p>
+                
+                <div class="fb-feed-wrapper">
+                    <!-- Loading Message / AdBlock Fallback -->
+                    <div class="fb-loading-message">
+                        <i class="fas fa-circle-notch fa-spin fa-2x"></i>
+                        <p style="margin-top: 10px;">Loading Facebook Feed...</p>
+                        <p style="font-size: 0.8rem;">(If this area remains blank, your browser's Privacy settings or AdBlocker may be hiding the Facebook plugin)</p>
+                    </div>
+
+                    <!-- 
+                        UPDATED IFRAME SOURCE:
+                        I have removed the "/people/" segment from the encoded URL.
+                        It now points directly to the Page ID: 61585948091769.
+                        This resolves most "white square" errors.
+                    -->
+                    <iframe 
+                        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2F61585948091769&tabs=timeline&width=500&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" 
+                        width="500" 
+                        height="600" 
+                        style="border:none;overflow:hidden" 
+                        scrolling="no" 
+                        frameborder="0" 
+                        allowfullscreen="true" 
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                    </iframe>
+                </div>
+                
+                <!-- Fallback Button -->
+                <div>
+                    <a href="https://www.facebook.com/people/Benobots/61585948091769/" target="_blank" class="btn btn-outline">
+                        <i class="fab fa-facebook"></i> View Full Feed
+                    </a>
+                </div>
+
+            </div>
+        </section>
         
         <!-- =================== -->
         <!-- ===== ABOUT ======= -->
@@ -551,44 +168,6 @@
         </section>
 
         <!-- ======================= -->
-        <!-- ==== SOCIAL FEED ====== -->
-        <!-- ======================= -->
-        <section id="social-feed" class="fade-in-section">
-            <div class="container">
-                <h2>Latest Updates</h2>
-                <p>Check out my latest posts on Facebook.</p>
-                
-                <div class="fb-feed-wrapper">
-                    <!-- 
-                       Reverted to JS SDK method as it successfully loads the container.
-                       We use the specific /people/ URL format which works best for New Page Experience.
-                    -->
-                    <div class="fb-page" 
-                        data-href="https://www.facebook.com/people/Benobots/61585948091769/" 
-                        data-tabs="timeline" 
-                        data-width="500" 
-                        data-height="600" 
-                        data-small-header="false" 
-                        data-adapt-container-width="true" 
-                        data-hide-cover="false" 
-                        data-show-facepile="true">
-                        <blockquote cite="https://www.facebook.com/people/Benobots/61585948091769/" class="fb-xfbml-parse-ignore">
-                            <a href="https://www.facebook.com/people/Benobots/61585948091769/">Benobots</a>
-                        </blockquote>
-                    </div>
-                </div>
-                
-                <!-- Added a Fallback Button -->
-                <div>
-                    <a href="https://www.facebook.com/people/Benobots/61585948091769/" target="_blank" class="btn btn-outline">
-                        <i class="fab fa-facebook"></i> View Full Feed
-                    </a>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ======================= -->
         <!-- ==== TESTIMONIALS ===== -->
         <!-- ======================= -->
         <section id="testimonials" class="fade-in-section">
@@ -596,7 +175,7 @@
                 <h2>What My Clients Say</h2>
                 <div class="testimonial-card">
                     <div class="testimonial-image">
-                        <!-- Make sure you have an image named korraphone.jpg in the same folder as your HTML file -->
+                        <!-- Make sure you have an image named korraphone.jpg in the same folder -->
                         <img src="korraphone.jpg" alt="A cute dog named Korra with a phone">
                     </div>
                     <div class="testimonial-text">

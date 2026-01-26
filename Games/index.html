@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #000;
+            --bg-color: #fff;
+            --text-color: #121212;
+            --card-bg: #f9f9f9;
+            --card-hover: #f0f0f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        header {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        h1 {
+            font-weight: 900;
+            font-size: 2rem;
+            letter-spacing: -1px;
+        }
+
+        /* Auth Styles */
+        .auth-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .google-btn {
+            background-color: white;
+            color: #333;
+            border: 1px solid #ccc;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .google-btn:hover {
+            background-color: #f8f8f8;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid #eee;
+        }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .user-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .sign-out-link {
+            font-size: 0.75rem;
+            color: #666;
+            text-decoration: underline;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        /* Game Grid */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .game-card {
+            background-color: var(--card-bg);
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 25px;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 200px;
+            justify-content: space-between;
+        }
+
+        .game-card:hover {
+            transform: translateY(-2px);
+            background-color: var(--card-hover);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .game-card.disabled {
+            opacity: 0.6;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .game-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .game-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .game-desc {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .play-cta {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Game Hub</h1>
+        
+        <div class="auth-section">
+            <button id="hub-google-login" class="google-btn">
+                <svg width="16" height="16" viewBox="0 0 18 18">
+                    <path d="M17.64 9.2c0-.637-.057-1.252-.164-1.841H9v3.481h4.844a4.14 4.14 0 0 1-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" fill="#4285F4"></path>
+                    <path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.715H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"></path>
+                    <path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"></path>
+                    <path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 7.29C4.672 5.159 6.656 3.58 9 3.58z" fill="#EA4335"></path>
+                </svg>
+                Sign in
+            </button>
+
+            <div id="hub-user-display" class="user-profile hidden">
+                <div class="user-info">
+                    <span id="hub-username" class="user-name">User</span>
+                    <button id="hub-sign-out" class="sign-out-link">Sign Out</button>
+                </div>
+                <img id="hub-avatar" class="user-avatar" src="" alt="Profile">
+            </div>
+        </div>
+    </header>
+
+    <main class="games-grid">
+        <!-- Game 1: The Mini -->
+        <a href="crossword.html" class="game-card">
+            <div>
+                <div class="game-icon">🧩</div>
+                <h2 class="game-title">The Daily Mini</h2>
+                <p class="game-desc">A quick, bite-sized crossword puzzle refreshed every day.</p>
+            </div>
+            <div class="play-cta">Play Now &rarr;</div>
+        </a>
+
+        <!-- Placeholder Game -->
+        <div class="game-card disabled">
+            <div>
+                <div class="game-icon">🎮</div>
+                <h2 class="game-title">Word Links</h2>
+                <p class="game-desc">Connect associated words in this mind-bending association game.</p>
+            </div>
+            <div class="play-cta">Coming Soon</div>
+        </div>
+
+        <!-- Placeholder Game 2 -->
+        <div class="game-card disabled">
+            <div>
+                <div class="game-icon">🔢</div>
+                <h2 class="game-title">Number Crunch</h2>
+                <p class="game-desc">A logic puzzle for math enthusiasts.</p>
+            </div>
+            <div class="play-cta">Coming Soon</div>
+        </div>
+    </main>
+
+    <script type="module" src="hub.js"></script>
+</body>
+</html>

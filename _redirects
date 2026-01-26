@@ -1,8 +1,5 @@
 # 1. Redirect homepage to games
 /   /games   301
 
-# 2. Force trailing slash (Fixes the JS loading issue)
-/mini-crossword   /mini-crossword/   301
-
-# 3. Proxy the game content
+# 2. Proxy the game content
 /mini-crossword/*  https://zesty-macaron-b5430b.netlify.app/:splat  200

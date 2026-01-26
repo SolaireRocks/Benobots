@@ -3,3 +3,5 @@
 
 # 2. Proxy the game content
 /mini-crossword/*  https://zesty-macaron-b5430b.netlify.app/:splat  200
+
+/Bennections/*  https://bennections.netlify.app/:splat  200
